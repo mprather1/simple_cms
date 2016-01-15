@@ -1,0 +1,36 @@
+<h1>Demo#Hello</h1>
+
+<% x = 1+1 %>
+<%= "1 + 1 = #{x}" %>
+<br>
+
+<% target = "word!!!" %>
+<%= "Hello #{target}" %>
+<br>
+
+<% 3.times do %>
+  <%= 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' %><br>
+<% end %>
+<hr>
+
+<% @array.each do |n| %>
+  <%= n %><br>
+<% end %>
+<hr>
+
+<a href="/demo/index">Index Page HTML</a><br>
+<%= link_to("Index Page Ruby", {:action => 'index'}) %>
+<hr>
+
+<%= "<%= params[:id] %\> = " + params[:id] %><br>
+<%= "<%= @id %\> = " + @id %><br>
+<%= "<%= @page %\> = " + @page %><br>
+<% x = @page.to_i + 1 %>
+<%= "Next Page = #{x}, <%= @page.to_i + 1 %\>" %>
+<hr>
+
+<%= "params.inspect = " + params.inspect %>
+
+
+
+

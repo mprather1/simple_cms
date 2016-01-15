@@ -1,0 +1,63 @@
+<h2>Date and Time Helpers</h2>
+<hr>
+<% text = "second seconds\nminute minutes\nhour hours\nday days\nweek weeks\nmonth months\nyear years"
+%>
+<% text2 = "beginning_of_day - end_of_day\nbeginning_of_week - end_of_week\nbeginning_of_month - end_of_month\nbeginning_of_year - end_of_year\nyesterday - tomorrow\nlast_week - next_week\nlast_month - next month\nlast_year - next_year" %>
+
+<%= simple_format(text) %>
+<hr>
+<p>
+  <h3>ago & from_now</h3>
+  Examples:<br>
+  Time.now + 30 days - 23 minutes <br>
+  <%= Time.now + 30.days - 23.minutes %> <br />
+  30.days.from_now - 23.minutes + 44.seconds <br>
+  <%= 30.days.from_now - 23.minutes + 44.seconds %><br>
+  <hr>
+</p>
+<%= simple_format(text2) %>
+<p>Example: Time.now.last_year.end_of_month.beginning_of_day <br>
+  <%= Time.now.last_year.end_of_month.beginning_of_day %>
+</p>
+<hr>
+<h3>datetime.strftime</h3>
+<p>Example: Time.now.strftime(%B %d, %Y %H %M)<br>
+<%= Time.now.strftime("%B %d, %Y %H:%M") %><br>
+<hr>
+<h4>Format Codes</h4>
+<h5>Day</h5>
+%a = Sun - %A = Sunday
+<h5>Date</h5>
+%d = Day of the Month
+<h5>Month</h5>
+%b = "Jan" <br>
+%B = "January" <br>
+%m = month of the year(1..12) <br>
+<h5>Year</h5>
+%y = Year without century (00..99) <br>
+%Y = Year with century <br>
+<h5>Time</h5>
+%H = Hour of the day - 24 hour clock <br>
+%I = Hour of the day - 12 hour clock <br>
+%M = Minute of the hour <br>
+%S = Second of the Minute <br>
+%p = Meridian Incdicator (AM..PM) <br>
+%Z Time zone name</p>
+
+<hr>
+<h3>Date Time Formatting</h3>
+<p>datetime.to_s( format_symbol ) <br>
+  <h5>Default formats (Time::DATE_FORMATS)</h5>
+  :db = "2000-00-00 12:22:22"<br>
+  :number = "20130109133629" <br>
+  :time = "13:36"<br>
+  :short = "09 Jan 13:36"<br>
+  :long = "January 09, 2013 13:36"<br>
+  :long ordinal = "January 9th, 2013 13:36"<br>
+  <h5>Custom Formats</h5>
+  Time::DATE_FORMATS[:custom] = "%B %e, %Y at %l:%M %p" <br>
+  save to config/initializers/date_formats.rb <br><br>
+  Example: Time.now.to_s[:custom] <br>
+  <%= Time.now.to_s(:custom) %> <br>
+</p>
+<hr>

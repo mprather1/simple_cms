@@ -1,0 +1,39 @@
+<% text = ":delimiter\nDelimits thousands; default is ','\n:seperator\nDecimal Seperator; default '.'\n:precision\nDecimal places to show; default varies\n\n" %>
+<h2>Number Helper Options</h2>
+<%= simple_format(text) %>
+<hr>
+<h2>number_to_currency</h2>
+<%= number_to_currency(34.5) %><br />
+<%= number_to_currency(34.5, :precision => 0, :unit => "kr", :format => "%n %u") %>
+<hr>
+
+<h2>number_to_percentage</h2>
+<%= number_to_percentage(34.5) %><br>
+<%= number_to_percentage(34.5, :precision =>1, :seperator => ',') %>
+<hr>
+
+<h2>number_with_precision</h2><! also known as number_to_rounded!>
+<%= number_with_precision(34.56789) %><br>
+<%= number_with_precision(34.56789, :precision => 6) %>
+<hr>
+
+<h2>number_with_delimiter</h2><!also known as number_to_delimited!>
+<%= number_with_delimiter(3456789) %><br>
+<%= number_with_delimiter(3456789, :delimiter => ' ') %>
+<hr>
+
+<h2>number_to_human</h2>
+<%= number_to_human(123456789) %><br>
+<%= number_to_human(1234) %><br>
+<%= number_to_human(123456789, :precision => 5) %>
+<hr>
+
+<h2>number_to_human_size</h2>
+<%= number_to_human_size(1234567) %><br>
+<%= number_to_human_size(1234567, :precision => 2) %>
+<hr>
+
+<h2>number_to_phone</h2>
+<%= number_to_phone(6201235555) %><br>
+<%= number_to_phone(6201235555, :area_code => true, :delimiter => ' ', :country_code => 1, :extenion => 321) %>
+<hr>
