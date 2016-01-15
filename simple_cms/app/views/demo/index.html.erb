@@ -1,6 +1,11 @@
-<h1>Demo#index</h1>
+<h1>Demoindex</h1>
+<p>Hello World!!</p>
 
-<a href="/demo/hello">Hello Page HTML</a><br>
-<%= link_to("Hello Page Ruby", {:action => 'hello'}) %><br>
-<%= link_to("Hello Page Ruby Parameters", {:action => 'hello', :page => 5, :id => 20}) %>
+<a href="/demo/hello">Hello Page </a><br />
+<%= link_to('Hello Page 2', {:action => 'hello'}) %><br />
 
+<%= link_to('Hello Page with Parameters', {:action => 'hello', :page => 5, :id => 20 }) %>
+<br>
+<%= link_to('Hello', '#', :onclick => "jsRoar('JavaScript'); return true;") %>
+
+<%= javascript_tag("jsRoar('Rails');") %>
