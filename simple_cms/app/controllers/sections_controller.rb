@@ -6,6 +6,7 @@ class SectionsController < ApplicationController
 
   def new
     @section = Section.new
+    @section_count = Section.count + 1
   end
 
   def create
@@ -24,6 +25,7 @@ class SectionsController < ApplicationController
 
   def edit
     @section = Section.find(params[:id])
+    @section_count = Section.count
   end
 
   def update
@@ -33,6 +35,7 @@ class SectionsController < ApplicationController
       flash[:notice] = "Successfully updated..."
       redirect_to(:action => 'show', :id => @section.id)
     else
+      @section_count = Section.count
       render('edit')
     end
   end
@@ -50,6 +53,6 @@ class SectionsController < ApplicationController
   private
 
   def section_params
-    params.require(:section).permit(:name, :position, :visible, :content_type, :content)
+    params.require(:section).permit(:page_id, :name, :position, :visible, :content_type, :content)
   end
 end
