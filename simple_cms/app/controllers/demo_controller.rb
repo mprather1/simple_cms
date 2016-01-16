@@ -35,5 +35,9 @@ class DemoController < ApplicationController
 
   def form_helpers
   end
+  
+  def validation_methods
+    
+  end
 
 end

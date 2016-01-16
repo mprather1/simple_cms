@@ -1,0 +1,63 @@
+<h1>Validation Methods</h1>
+<h4>validates_presence_of</h4>
+<p>must not be blank<br>
+  :message => "can't be blank'</p>
+<h4>validates_length_of </h4>
+<p>Attribute must meet length requirements<br>
+  => :is, :minimum, :maximum, :within, :in
+  </p>
+<h4>validates_numericality_of</h4>
+<p>Attribute must be an integer or float<br>
+  => :eaqual_to, :greater_than, :less_than, :greater_than_or_equal_to, :odd, :even, :only_integer</p>
+<h4>validates_inclusion_of</h4>
+<p>Attribute must be in a list of choices (an array or range)<br>
+  => :in</p>
+<h4>validates_exlusion_of</h4>
+<p>Attribute must not be in a list of choices (array or range)<br>
+  => :in </p>
+<h4>validates_format_of</h4>
+<p>Attribute must match a regular expression<br>
+  => :with
+  :message => 'is invalid</p>
+<h4>validates_uniqueness_of</h4>
+<p>Attributes must not exist in the database<br>
+  => :case_sensitive, :scope
+  :message => 'has already been taken'<br>
+  For unique values by subject use :scope => :subject_id
+</p>
+<h4>validates_acceptance_of</h4>
+<p>Attribute must be "accepted
+  Creates virtual attribute when no table column<br>
+  => :accept (expected value, "1")</p>
+<h4>validates_confirmation_of</h4>
+<p>Attribute must be confiirmed by entering it twice<br>
+  Creates a virtual attribute for the confirmation<br>
+  Only validates when confirmation attribute is not nil</p>
+<h4>validates_associated</h4>
+<p>Associated object or objects must all be valid<br>
+  First argument is an association name, not attribute<br>
+  Calls #valid? on the object or array of objects<br>
+  Does not fail if object does not exist<br>
+  Beware of infinite loops and long cascades</p>
+<h4>Etc..</h4>
+<p>Most methods accept the options :allow_nil => true, :allow_blank => true<br>
+  :on => :save / :create / :update<br>
+  Only validates if this is a new record (:create) or and existing record (:update)<br>
+  :save validates in both cases and is the default<br>
+  :if => :method / :unless => :method<br>
+  :method is a method defined in the model that should return true or false<br>
+  Only validates when the returned boolean value indicates that it should<br>
+  s.valid?<br>
+  Checks if object is valid<br>
+  s.errors and s.errors.full_messages<br>
+  Show error messages</p><br>
+  <h4>Validation Syntax</h4>
+  <p>validates :attribute, :presence => boolean,<br>
+                           :numericality => boolean,<br>
+                           :length => options_hash,<br>
+                           :format => { :with => regex },<br>
+                           :inclusion => { :in => array_or_range },<br>
+                           :exclusion => { :in => array_or_range },<br>
+                           :acceptance => boolean,<br>
+                           :uniqueness => boolean,<br>
+                           :confirmation => boolean</p>
