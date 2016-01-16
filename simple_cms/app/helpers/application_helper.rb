@@ -1,4 +1,10 @@
 module ApplicationHelper
+
+  def error_messages_for(object)
+    render(:partial => 'application/error_message', :locals => {:object => object})
+    
+  end
+  
   def status_tag(boolean, options={})
     options[:true_text]  ||= ""
     options[:false_text] ||= ""
@@ -8,6 +14,6 @@ module ApplicationHelper
     else
       content_tag(:span, options[:false_text], :class => 'status false')
     end
-
   end
+
 end

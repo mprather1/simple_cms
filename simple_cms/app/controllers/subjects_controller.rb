@@ -10,7 +10,7 @@ class SubjectsController < ApplicationController
   end
 
   def new
-    @subject = Subject.new({:name => "Default"})
+    @subject = Subject.new
     @subject_count = Subject.count + 1
   end
 
@@ -56,6 +56,6 @@ class SubjectsController < ApplicationController
   private
 
   def subject_params
-    params.require(:subject).permit(:name, :position, :visible)
+    params.require(:subject).permit(:name, :position, :visible, :created_at)
   end
 end
