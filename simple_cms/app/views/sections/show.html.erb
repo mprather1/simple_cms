@@ -1,7 +1,7 @@
 
 
 <%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
-
+<% content = @section.content %>
 <div class="sections show">
 	<h2>Show Section</h2>
 
@@ -20,7 +20,8 @@
 		</tr>
 		<tr>
 			<th>Content</th>
-			<td><%= @section.content %></td>
+			<td><%= simple_format(word_wrap(content, :line_width => 30)) %></td>
+		<!--	<td><%# @section.content %></td> -->
 		</tr>
 		<tr>
 			<th>Created</th>

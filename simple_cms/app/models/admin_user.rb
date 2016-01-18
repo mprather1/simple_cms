@@ -8,6 +8,8 @@ class AdminUser < ActiveRecord::Base
   has_many :section_edits
   has_many :sections, :through => :section_edits
   
+  scope :sorted, lambda { order("last_name ASC, first_name ASC") }
+
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   FORBIDDEN_USERNAMES = ['fucker', 'douchebag', 'queer']
 #    validates_presence_of :first_name
@@ -27,7 +29,7 @@ class AdminUser < ActiveRecord::Base
   validates :last_name, :presence => true,
                         :length => { :maximum => 50 }
   validates :username, :presence => true,
-                       :length => { :within => 8..25 },
+                       :length => { :within => 4..25 },
                        :uniqueness => true
   validates :email, :presence => true,
                     :length => { :maximum => 100 },
@@ -50,5 +52,10 @@ class AdminUser < ActiveRecord::Base
       errors[:base] << "No new users on Saturdays."
     end
   end
+  
+  def name
+    "#{first_name} #{last_name}"
+  end
+  
   
 end

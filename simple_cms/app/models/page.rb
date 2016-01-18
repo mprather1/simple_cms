@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of :permalink
   #for unique values by subject use :scope => :subject_id
   
-    scope :visible, lambda { where(:visible => true)}
+  scope :visible, lambda { where(:visible => true)}
   scope :invisible, lambda { where(:visible => false)}
   scope :sorted, lambda { order("pages.position ASC")}
   scope :newest_first, lambda { order("pages.created_at DESC")} 

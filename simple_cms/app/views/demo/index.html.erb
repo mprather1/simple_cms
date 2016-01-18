@@ -8,4 +8,14 @@
 <br>
 <%= link_to('Hello', '#', :onclick => "jsRoar('JavaScript'); return true;") %>
 
+<hr>
+
+<%= link_to('Text Helpers', {:action => 'text_helpers'}) %><br />
+<%= link_to('Number Helpers', {:action => 'number_helpers'}) %><br />
+<%= link_to('Form Helpers', {:action => 'form_helpers'}) %><br />
+<%= link_to('Date Time Helpers', {:action => 'date_time_helpers'}) %><br />
+<%= link_to('Escape Output', {:action => 'escape_output'}) %><br />
+<%= link_to('Validation Methods', {:action => 'validation_methods'}) %><br />
+
+
 <%= javascript_tag("jsRoar('Rails');") %>

@@ -1,12 +1,14 @@
 class AccessController < ApplicationController
+  
   layout 'admin'
+
+  before_action :confirm_logged_in, :except => [:login, :attempt_login, :logout]
+
   def index
     @username = params[:username]
     # display text and links
   end
   
-  before_action :confirm_logged_in, :except => [:login, :attempt_login, :logout]
-
   def login
     # login form
   end
