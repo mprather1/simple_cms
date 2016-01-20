@@ -1,5 +1,7 @@
 <%= @page_title = "Admin Login" %>
 
+
+
 <div class="login">
     <%= form_tag(:action => 'attempt_login') do %>
     <table>
@@ -15,7 +17,10 @@
             <td>&nbsp;</td>
             <td><%= submit_tag("Log In") %></td>
         </tr>
+        
     </table>
+    <%= link_to("<< Back to Public Area", {:controller => 'public', :action => 'index'}, :class => 'back-link') %>
+
     <% end %>
 </div>
 

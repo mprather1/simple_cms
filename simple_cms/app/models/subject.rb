@@ -1,6 +1,13 @@
 class Subject < ActiveRecord::Base
-
+  # Could delete related pages automatically
+  # whenever a subject is deleted
+  # has_many :pages, :dependent => :destroy
+  
   has_many :pages
+  
+  acts_as_list
+  
+  after_destroy :delete_related_pages
   
   validates_presence_of :name
   validates_length_of :name, :maximum => 255
@@ -12,4 +19,12 @@ class Subject < ActiveRecord::Base
   scope :search, lambda { |query|
     where(["name LIKE ?", "%#{query}%"])
   }
+  
+  private
+  
+  def delete_related_pages
+    self.pages.each do |page|
+      page.destroy
+    end
+  end
 end

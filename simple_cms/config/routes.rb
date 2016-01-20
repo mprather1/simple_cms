@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
- 
-  root "access#index"
+
+  root "public#index"
   
   get 'admin', :to => "access#index"
+  
+  get 'show/:permalink', :to => 'public#show'
 
   #get 'demo/index' #=> 'demo#index'
   match ':controller(/:action(/:id))', :via => [:get, :post]

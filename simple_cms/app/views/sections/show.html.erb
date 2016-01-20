@@ -1,6 +1,6 @@
 
 
-<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'index', :page_id => @page.id}, :class => 'back-link') %>
 <% content = @section.content %>
 <div class="sections show">
 	<h2>Show Section</h2>
@@ -15,7 +15,7 @@
 			<td><%= @section.position %></td>
 		</tr>
 		<tr>
-			<th>Visible?</th>
+			<th>Visible</th>
 			<td><%=  @section.visible ? 'true' : 'false' %></td>
 		</tr>
 		<tr>

@@ -4,6 +4,9 @@ class AdminUser < ActiveRecord::Base
 
   has_secure_password
   
+  #validates_presence_of :password
+  #validates_confirmation_of :password 
+  
   has_and_belongs_to_many :pages
   has_many :section_edits
   has_many :sections, :through => :section_edits
@@ -23,7 +26,7 @@ class AdminUser < ActiveRecord::Base
 #    validates_length_of :email, :maximum => 100
 #    validates_format_of :email, :with => EMAIL_REGEX
 #    validates_confirmation_of :email
-#    validates_confirmation_of :password  
+   
   validates :first_name, :presence => true,
                          :length => { :maximum => 25 }
   validates :last_name, :presence => true,
@@ -35,6 +38,9 @@ class AdminUser < ActiveRecord::Base
                     :length => { :maximum => 100 },
                     :format => { :with => EMAIL_REGEX },
                     :confirmation => true
+  validates :password, :confirmation => true
+  #validates :password_confirmation, :presence => true
+  
   
   validate :username_is_allowed
 # validate :no_new_users_on_saturday, :on => :create

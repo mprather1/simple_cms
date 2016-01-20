@@ -3,14 +3,16 @@ class SectionsController < ApplicationController
   layout 'admin'
     
   before_action :confirm_logged_in
+  before_action :find_page
 
   def index
-    @sections = Section.sorted
+    #@sections = Section.where(subject_id => @subject.id).sorted
+    @sections = @page.sections.sorted
   end
 
   def new
-    @section = Section.new
-    @pages = Page.order('position ASC')
+    @section = Section.new({:page_id => @page.id, :name => "Default"})
+    @pages = @page.subject.pages.sorted
     @section_count = Section.count + 1
   end
 
@@ -18,7 +20,7 @@ class SectionsController < ApplicationController
     @section = Section.new(section_params)
     if @section.save
       flash[:notice] = "Successfully created..."
-      redirect_to(:action => 'index')
+      redirect_to(:action => 'index', :page_id => @page.id)
     else
       @pages = Page.order('position ASC')
       @section_count = Section.count + 1
@@ -41,7 +43,7 @@ class SectionsController < ApplicationController
 
     if @section.update_attributes(section_params)
       flash[:notice] = "Successfully updated..."
-      redirect_to(:action => 'show', :id => @section.id)
+      redirect_to(:action => 'show', :id => @section.id, :page_id => @page.id)
     else
       @pages = Page.order('position ASC')
       @section_count = Section.count
@@ -56,7 +58,7 @@ class SectionsController < ApplicationController
   def destroy
     section = Section.find(params[:id]).destroy
     flash[:notice] = "Successfully destroyed..."
-    redirect_to(:action => 'index')
+    redirect_to(:action => 'index', :page_id => @page.id)
   end
 
   private
@@ -64,4 +66,11 @@ class SectionsController < ApplicationController
   def section_params
     params.require(:section).permit(:page_id, :name, :position, :visible, :content_type, :content)
   end
+  
+  def find_page
+    if params[:page_id]
+      @page = Page.find(params[:page_id])
+    end
+  end
+  
 end
